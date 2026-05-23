@@ -1,141 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vantaline Automotive</title>
-    <!-- Link to external stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Google Fonts for premium typography -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;500;700&family=Montserrat:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <h1 class="logo">Vantaline Automotive</h1>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#cars">Stock</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vantaline Automotive | Quality Used Cars in Wembley</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Vantaline Automotive</h1>
+      <p>Your trusted source for quality used cars in Wembley</p>
+      <a href="#inventory" class="btn">View Stock</a>
+      <a href="#contact" class="btn btn-secondary">Contact Us</a>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-      <div class="container">
-        <h2>Your Journey Begins Here</h2>
-        <p>
-          Discover our curated selection of performance and luxury vehicles. Quality,
-          reliability and style in every drive.
-        </p>
-        <a href="#cars" class="btn">View Stock</a>
-      </div>
-    </section>
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        Welcome to Vantaline Automotive, an independent car dealership proudly based in Wembley since 2023.
+        Privately owned and operated, we’re committed to offering a friendly, transparent and stress‑free car‑
+        buying experience. Operating from our well‑presented unit with a forecourt, we stock a range of quality
+        used vehicles to suit every budget and lifestyle. Customer satisfaction is at the heart of what we do –
+        that’s why we offer free home delivery within 10 miles, and nationwide delivery at just £80 plus £1.20
+        per mile up to 80 miles beyond. Whether you visit us in person or shop from home, you can count on
+        honest advice, great value and exceptional service from start to finish.
+      </p>
+    </div>
+  </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-      <div class="container">
-        <h2>Why Choose Vantaline</h2>
-        <div class="feature-grid">
-          <div class="feature">
-            <span class="icon">🚗</span>
-            <h3>Premium Selection</h3>
-            <p>
-              Only the best vehicles, carefully selected to meet our high
-              standards.
-            </p>
-          </div>
-          <div class="feature">
-            <span class="icon">💼</span>
-            <h3>Finance Options</h3>
-            <p>
-              Flexible finance and lease options tailored to your needs and
-              budget.
-            </p>
-          </div>
-          <div class="feature">
-            <span class="icon">🔧</span>
-            <h3>Expert Support</h3>
-            <p>
-              Trusted advisors and mechanics to help you find and maintain your
-              dream car.
-            </p>
-          </div>
+  <section id="why-buy" class="features">
+    <div class="container">
+      <h2>Why Buy From Us?</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Quality &amp; Service</h3>
+          <p>We take pride in offering well‑maintained cars and a transparent buying process.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2>About Vantaline</h2>
-        <p>
-          Based in the heart of the UK, Vantaline Automotive is dedicated to
-          providing a bespoke dealership experience. With years of expertise in
-          sourcing and presenting the finest vehicles, we pride ourselves on
-          unmatched customer service. Whether you're seeking your next
-          performance car or a reliable family vehicle, our team is here to
-          assist.
-        </p>
-      </div>
-    </section>
-
-    <!-- Cars Section -->
-    <section id="cars" class="cars">
-      <div class="container">
-        <h2>Our Current Stock</h2>
-        <p class="small-text">
-          Stock updates automatically from our Auto Trader feed. Contact us to
-          reserve any vehicle.
-        </p>
-        <div id="car-container" class="car-grid">
-          <!-- Dynamically loaded cars will appear here -->
+        <div class="feature">
+          <h3>Trusted &amp; Transparent</h3>
+          <p>Our aim is to build long‑term relationships with our customers through honesty and integrity.</p>
         </div>
+        <div class="feature">
+          <h3>Part Exchange Welcome</h3>
+          <p>Have a vehicle to sell? We’ll give you a fair valuation and handle all paperwork.</p>
+        </div>
+        <div class="feature">
+          <h3>Book an Appointment</h3>
+          <p>We operate by appointment only – get in touch to arrange a viewing at a time that suits you.</p>
+        </div>
+      <!-- New feature: Car sourcing service -->
+      <div class="feature">
+        <h3>Car Sourcing</h3>
+        <p>If we don’t have your dream car in stock, we’ll source it for you through our extensive network of trusted suppliers.</p>
       </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:info@vantalineautomotive.co.uk">info@vantalineautomotive.co.uk</a></p>
-        <form id="contact-form" action="https://formspree.io/f/maqkozoy" method="POST">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div class="form-group">
-  <label for="phone">Phone Number</label>
-  <input type="tel" id="phone" name="phone" required />
-</div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <p>&copy; <span id="year"></span> Vantaline Automotive. All rights reserved.</p>
+  <section id="inventory" class="inventory">
+    <div class="container">
+      <h2>Our Current Stock</h2>
+      <div id="car-container" class="car-container">
+        <!-- Cars will be injected here by script.js -->
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-  </body>
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Address: 77 Wembley Park Drive, Wembley, Middlesex, HA9 8HE</p>
+      <p>Phone: <a href="tel:+447456393340">07456 393340</a></p>
+      <p>Email: <a href="mailto:info@vantalineautomotive.co.uk">info@vantalineautomotive.co.uk</a></p>
+      <form id="contact-form" action="https://formspree.io/f/YOUR-FORMSPREE-ID" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="_replyto" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Vantaline Automotive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
