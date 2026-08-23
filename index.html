@@ -1,108 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vantaline Automotive | Quality Used Cars in Wembley</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vantaline Plumbing | Local Plumber in Northwest London</title>
+  <meta name="description" content="Leaks, blockages, toilets, taps and plumbing call-outs across Wembley and Northwest London. Get a call-out price and book online.">
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://js.stripe.com/v3/" defer></script>
+  <script src="/script.js" defer></script>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Vantaline Automotive</h1>
-      <p>Your trusted source for quality used cars in Wembley</p>
-      <a href="#inventory" class="btn">View Stock</a>
-      <a href="#contact" class="btn btn-secondary">Contact Us</a>
-    </div>
+  <div class="notice"><span>Local plumbing repairs across Northwest London</span><a href="tel:+447435376862">Need help? Call 07435 376862</a></div>
+  <header>
+    <a class="brand" href="#top"><span class="mark">V</span><span><b>VANTALINE</b><small>PLUMBING</small></span></a>
+    <nav><a href="#quote">Prices & booking</a><a href="#services">Services</a><a href="#areas">Areas</a></nav>
+    <a class="button small" href="#quote">Get price</a>
   </header>
 
-  <section id="about" class="about">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>
-        Welcome to Vantaline Automotive, an independent car dealership proudly based in Wembley since 2023.
-        Privately owned and operated, we’re committed to offering a friendly, transparent and stress‑free car‑
-        buying experience. Operating from our well‑presented unit with a forecourt, we stock a range of quality
-        used vehicles to suit every budget and lifestyle. Customer satisfaction is at the heart of what we do –
-        that’s why we offer free home delivery within 10 miles, and nationwide delivery at just £80 plus £1.20
-        per mile up to 80 miles beyond. Whether you visit us in person or shop from home, you can count on
-        honest advice, great value and exceptional service from start to finish.
-      </p>
-    </div>
-  </section>
-
-  <section id="why-buy" class="features">
-    <div class="container">
-      <h2>Why Buy From Us?</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <h3>Quality &amp; Service</h3>
-          <p>We take pride in offering well‑maintained cars and a transparent buying process.</p>
-        </div>
-        <div class="feature">
-          <h3>Trusted &amp; Transparent</h3>
-          <p>Our aim is to build long‑term relationships with our customers through honesty and integrity.</p>
-        </div>
-        <div class="feature">
-          <h3>Part Exchange Welcome</h3>
-          <p>Have a vehicle to sell? We’ll give you a fair valuation and handle all paperwork.</p>
-        </div>
-        <div class="feature">
-          <h3>Book an Appointment</h3>
-          <p>We operate by appointment only – get in touch to arrange a viewing at a time that suits you.</p>
-        </div>
-      <!-- New feature: Car sourcing service -->
-      <div class="feature">
-        <h3>Car Sourcing</h3>
-        <p>If we don’t have your dream car in stock, we’ll source it for you through our extensive network of trusted suppliers.</p>
+  <main>
+    <section class="hero" id="top">
+      <div>
+        <p class="eyebrow">LOCAL · RESPONSIVE · STRAIGHTFORWARD</p>
+        <h1>Plumbing problem?<br><em>Let’s get it sorted.</em></h1>
+        <p class="lead">Leaks, blockages, toilets, taps and everyday plumbing repairs across Wembley and Northwest London.</p>
+        <div class="actions"><a class="button" href="#quote">Get price & book online</a><a class="button outline" href="tel:+447435376862">Call 07435 376862</a></div>
+        <div class="trust"><span>✓ Competitive call-outs</span><span>✓ Prices agreed before repair</span><span>✓ Homes & landlords</span></div>
       </div>
+      <div class="hero-image"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=85" alt="Plumber carrying out a pipe repair"><div class="status"><i></i><span><b>Need a plumber today?</b><small>Check availability online</small></span></div></div>
+    </section>
+
+    <section class="quote section" id="quote">
+      <div class="quote-copy">
+        <p class="kicker">INSTANT CALL-OUT PRICE</p>
+        <h2>Check the fee.<br>Book securely.</h2>
+        <p>We calculate a competitive call-out from your postcode without displaying our starting location. Repair prices are guides only and agreed after inspection.</p>
+        <div class="facts"><span><b>£39</b><small>local call-out from</small></span><span><b>Call-out only</b><small>repair charged separately</small></span><span><b>Apple Pay</b><small>secure payment on-site</small></span></div>
       </div>
-    </div>
-  </section>
 
-  <section id="inventory" class="inventory">
-    <div class="container">
-      <h2>Our Current Stock</h2>
-      <div id="car-container" class="car-container">
-        <!-- Cars will be injected here by script.js -->
+      <div class="panel">
+        <form id="estimate-form">
+          <label>What do you need help with?
+            <select id="job" required>
+              <option value="">Choose the closest job</option>
+              <option value="toilet-remove">Remove an existing toilet</option>
+              <option value="toilet-install">Install a toilet — like-for-like</option>
+              <option value="fridge-connect">Connect a plumbed fridge freezer</option>
+              <option value="washing-machine">Connect a washing machine</option>
+              <option value="dishwasher">Connect a dishwasher</option>
+              <option value="tap-change">Replace a tap — like-for-like</option>
+              <option value="shower-head">Replace a shower head and hose</option>
+              <option value="mixer-shower">Replace an exposed mixer shower</option>
+              <option value="blocked-sink">Clear a blocked sink or basin</option>
+              <option value="blocked-toilet">Clear a blocked toilet</option>
+              <option value="blocked-drain">Clear a simple accessible drain</option>
+              <option value="other">Other or complex plumbing problem</option>
+            </select>
+          </label>
+          <label>Your postcode<input id="postcode" placeholder="e.g. HA1 1AA" autocomplete="postal-code" required></label>
+          <button class="button full" type="submit">Get my call-out price</button>
+          <p class="error" id="estimate-error" hidden></p>
+        </form>
+
+        <section id="booking" hidden>
+          <div class="result-head"><div><small>YOUR CALL-OUT</small><h3 id="job-label"></h3></div><span id="miles"></span></div>
+          <div class="price-row"><span>Typical repair guide</span><b id="guide"></b></div>
+          <div class="total"><span>Pay to book</span><b id="fee"></b></div>
+          <p class="disclaimer"><b>Important:</b> The online payment covers travel, attendance and initial assessment only. The repair guide is not a quote. Labour, parts, materials, parking, congestion charges and specialist equipment are separate and require your approval.</p>
+
+          <form id="booking-form">
+            <h3>Your booking details</h3>
+            <div class="grid">
+              <label>Full name<input name="name" autocomplete="name" required></label>
+              <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required></label>
+              <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+              <label>Preferred date<input name="preferredDate" type="date" required></label>
+              <label class="wide">Property address<input name="address" autocomplete="street-address" required></label>
+              <label class="wide">What is happening?<textarea name="details" rows="3" placeholder="Describe the problem and whether water is currently leaking." required></textarea></label>
+            </div>
+            <label class="check"><input type="checkbox" required><span>I understand I am paying the call-out only and repair work is charged separately after approval.</span></label>
+            <button class="pay" id="start-payment" type="submit"><span>Continue to secure payment</span><small>Apple Pay · Card · Stripe</small></button>
+            <p class="error" id="booking-error" hidden></p>
+          </form>
+
+          <form id="payment-form" hidden>
+            <h3>Secure payment</h3>
+            <div id="payment-element"></div>
+            <button class="pay" id="pay-now" type="submit"><span id="pay-label">Pay call-out</span><small>Encrypted and processed securely by Stripe</small></button>
+            <p class="error" id="payment-error" hidden></p>
+          </form>
+        </section>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>Address: 77 Wembley Park Drive, Wembley, Middlesex, HA9 8HE</p>
-      <p>Phone: <a href="tel:+447456393340">07456 393340</a></p>
-      <p>Email: <a href="mailto:info@vantalineautomotive.co.uk">info@vantalineautomotive.co.uk</a></p>
-      <form id="contact-form" action="https://formspree.io/f/YOUR-FORMSPREE-ID" method="POST">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="_replyto" required />
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
+    <section class="section services" id="services">
+      <p class="kicker dark">WHAT WE FIX</p><h2>One call. A practical solution.</h2>
+      <div class="cards"><article><b>↗</b><h3>Leaks & burst pipes</h3><p>Fast help before the damage gets worse.</p></article><article><b>◌</b><h3>Blocked sinks & toilets</h3><p>Clear stubborn internal and external blockages.</p></article><article><b>+</b><h3>Taps & toilets</h3><p>Repairs and replacements for everyday faults.</p></article><article><b>≈</b><h3>Showers & radiators</h3><p>Diagnose leaks, low flow and component faults.</p></article><article><b>□</b><h3>Appliance connections</h3><p>Washing machines, dishwashers and plumbed fridges.</p></article><article><b>⌂</b><h3>Landlord call-outs</h3><p>Responsive repairs for tenants and managed homes.</p></article></div>
+    </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Vantaline Automotive. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <section class="section areas" id="areas"><div><p class="kicker dark">LOCAL COVERAGE</p><h2>Serving Wembley and Northwest London.</h2><p>Focused local coverage for quicker attendance and sensible travel costs.</p></div><div class="area-tags"><span>Wembley</span><span>Harrow</span><span>Brent</span><span>Kilburn</span><span>Ealing</span><span>Northwest London</span></div></section>
+  </main>
+  <footer><a class="brand" href="#top"><span class="mark">V</span><span><b>VANTALINE</b><small>PLUMBING</small></span></a><p>Local plumbing repairs across Northwest London.</p><a href="tel:+447435376862">07435 376862</a></footer>
 </body>
 </html>
