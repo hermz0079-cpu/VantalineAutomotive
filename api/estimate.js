@@ -19,7 +19,11 @@ async function coordinates(postcode) {
   const response = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(postcode)}`);
   if (!response.ok) return null;
   const data = await response.json();
-  return data.result && { latitude: data.result.latitude, longitude: data.result.longitude };
+  return data.result && {
+    latitude: data.result.latitude,
+    longitude: data.result.longitude,
+    region: data.result.region
+  };
 }
 
 function milesBetween(a, b) {
@@ -36,6 +40,9 @@ function callout(miles) {
   if (miles <= 10) return 59;
   if (miles <= 15) return 75;
   if (miles <= 20) return 95;
+  if (miles <= 25) return 115;
+  if (miles <= 30) return 135;
+  if (miles <= 35) return 155;
   return null;
 }
 
@@ -46,9 +53,12 @@ export default async function handler(request, response) {
     if (!postcode || !JOBS[job]) return response.status(400).json({ error: "Enter your postcode and choose a job." });
     const [base, destination] = await Promise.all([coordinates(BASE_POSTCODE), coordinates(String(postcode).trim().toUpperCase())]);
     if (!base || !destination) return response.status(400).json({ error: "We could not recognise that postcode." });
+    if (destination.region !== "London") {
+      return response.status(400).json({ error: "Online booking is currently available across Greater London. Please call us for nearby areas." });
+    }
     const miles = milesBetween(base, destination);
     const fee = callout(miles);
-    if (!fee) return response.status(400).json({ error: "This postcode is outside our normal 20-mile area. Please call us." });
+    if (!fee) return response.status(400).json({ error: "This postcode is outside our Greater London online booking area. Please call us." });
     return response.json({
       postcode: String(postcode).trim().toUpperCase(),
       miles,
