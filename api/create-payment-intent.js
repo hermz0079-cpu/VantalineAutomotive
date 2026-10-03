@@ -1,4 +1,4 @@
-const ALLOWED_FEES = new Set([39, 49, 59, 75, 95]);
+const ALLOWED_FEES = new Set([39, 49, 59, 75, 95, 115, 135, 155]);
 
 export default async function handler(request, response) {
   if (request.method !== "POST") return response.status(405).json({ error: "Method not allowed" });
