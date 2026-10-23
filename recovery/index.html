@@ -49,11 +49,13 @@
 }
 </script>
 <link rel="stylesheet" href="/styles.css">
+<script src="https://js.stripe.com/v3/" defer></script>
+<script src="/script.js" defer></script>
 </head>
 <body>
 <header>
 <a class="brand" href="#top"><span class="mark">V</span><span><b>VANTALINE RECOVERY</b><small>24/7 RECOVERY & TRANSPORT</small></span></a>
-<nav><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#areas">Coverage</a><a href="#quote">Book Recovery</a></nav>
+<nav><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#areas">Coverage</a><a href="#quote">Book Recovery</a><a href="#deposit">Pay £50 Deposit</a></nav>
 </header>
 
 <main id="top">
@@ -84,12 +86,56 @@
 <label class="serviceField" id="destinationField">Destination<input id="destination" placeholder="Garage / home / postcode"></label>
 <label class="serviceField" id="regField">Registration<input id="reg" placeholder="AB12 CDE"></label>
 <button class="btn primary full" id="send">Get Fixed Recovery Quote on WhatsApp</button>
+<a class="btn deposit-link full" href="#deposit">Already agreed a quote? Pay £50 deposit</a>
 <div id="msg"></div>
 <p class="tiny">Estimator is a guide only. Final price depends on distance, access, vehicle weight/condition, timing and equipment and is confirmed before dispatch.</p>
 </div>
 </section>
 
 <section class="stats"><div><b>24/7</b><span>Recovery enquiries</span></div><div><b>£60</b><span>Roadside help from</span></div><div><b>£79</b><span>Local recovery from</span></div><div><b>UK</b><span>Nationwide transport</span></div></section>
+
+<section class="section deposit" id="deposit">
+<div class="deposit-copy">
+<span class="kicker">CONFIRMED JOBS ONLY</span>
+<h2>Secure dispatch with a £50 deposit.</h2>
+<p>Pay only after Vantaline Recovery has confirmed your final price and availability by phone or WhatsApp. The £50 deposit is credited against the agreed recovery price.</p>
+<ul>
+<li>Fixed £50 secure payment</li>
+<li>Cards and eligible digital wallets supported</li>
+<li>Booking details attached to the payment</li>
+<li>Deposit deducted from your final balance</li>
+</ul>
+<p class="deposit-note"><b>Not confirmed yet?</b> Call or WhatsApp first so we can check the vehicle, locations and equipment required.</p>
+</div>
+<div class="deposit-panel">
+<form id="deposit-details-form">
+<div class="deposit-heading"><div><small>JOB-SECURING DEPOSIT</small><h3>Pay £50</h3></div><span>Stripe secure</span></div>
+<div class="deposit-grid">
+<label>Full name<input name="name" autocomplete="name" required></label>
+<label>Mobile number<input name="phone" type="tel" autocomplete="tel" required></label>
+<label class="wide">Email address<input name="email" type="email" autocomplete="email" required></label>
+<label>Confirmed service<select name="service" id="deposit-service" required><option value="">Select service</option><option>Recovery / towing</option><option>Jump start</option><option>Accident / winch recovery</option><option>Vehicle pull-out / winch-out</option><option>Tyre assistance</option><option>Fuel delivery</option><option>Scheduled vehicle transport</option><option>Motorcycle recovery</option></select></label>
+<label>Vehicle registration<input name="registration" id="deposit-reg" autocomplete="off" placeholder="AB12 CDE" required></label>
+<label class="wide">Pickup / service location<input name="pickup" id="deposit-pickup" autocomplete="street-address" required></label>
+<label class="wide">Destination <span class="optional">(if applicable)</span><input name="destination" id="deposit-destination"></label>
+<label>Agreed total price<input name="agreedQuote" type="number" min="50" step="1" inputmode="decimal" placeholder="£" required></label>
+<label>Agreed date and time<input name="agreedDateTime" type="datetime-local" required></label>
+<label class="wide">Quote reference <span class="optional">(optional)</span><input name="quoteReference" placeholder="WhatsApp name or reference"></label>
+<label class="wide">Extra booking note <span class="optional">(optional)</span><textarea name="notes" rows="3" placeholder="Access details or anything already agreed"></textarea></label>
+</div>
+<label class="confirm"><input name="termsAccepted" type="checkbox" value="yes" required><span>I have received and accepted the final quote and availability. I understand the £50 deposit will be deducted from the agreed total.</span></label>
+<button class="btn primary full deposit-pay" id="prepare-deposit" type="submit">Continue to secure payment</button>
+<p class="deposit-error" id="deposit-details-error" hidden></p>
+</form>
+<form id="deposit-payment-form" hidden>
+<div class="deposit-heading"><div><small>SECURE PAYMENT</small><h3>£50 recovery deposit</h3></div><span>Encrypted</span></div>
+<div id="deposit-payment-element"></div>
+<button class="btn primary full deposit-pay" id="pay-deposit" type="submit">Pay £50 deposit</button>
+<p class="deposit-error" id="deposit-payment-error" hidden></p>
+<button class="back-to-details" id="back-to-deposit-details" type="button">← Check booking details</button>
+</form>
+</div>
+</section>
 
 <section class="section" id="services">
 <div class="head"><div><span class="kicker">SERVICES</span><h2>One number for almost every vehicle movement.</h2></div><p>Emergency breakdown recovery plus scheduled movements for garages, dealers, auctions and private customers.</p></div>
@@ -124,6 +170,5 @@
 
 <footer class="sitefoot"><div><b>Vantaline Recovery</b><br>24/7 Recovery & Vehicle Transport</div><div>London & UK</div><div>Pricing is indicative and subject to final confirmation.</div></footer>
 
-<script src="/script.js"></script>
 </body>
 </html>
