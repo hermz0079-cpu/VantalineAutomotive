@@ -88,3 +88,108 @@ document.querySelectorAll(".trade-wa").forEach(a=>a.addEventListener("click",e=>
 document.querySelectorAll(".pullout-book").forEach(a=>a.addEventListener("click",()=>{service.value="pullout";updateFields()}));
 $("send").addEventListener("click",()=>{const m=$("msg"),missing=validate();if(missing.length){m.style.display="block";m.textContent=`Please add ${missing.join(", ")} so we can quote this ${serviceConfig[service.value].label.toLowerCase()} properly.`;return}m.style.display="none";openWA()});
 updateFields();
+
+let depositStripe=null;
+let depositElements=null;
+let depositPaymentElement=null;
+const depositBookingToken=globalThis.crypto?.randomUUID?.()||`booking-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+const recoveryPaymentApi="https://www.vantalineplumbing.co.uk/api";
+
+function showDepositError(id,message){
+ const node=$(id);
+ if(!node)return;
+ node.textContent=message||"";
+ node.hidden=!message;
+}
+
+function prefillDeposit(){
+ const serviceField=$("deposit-service");
+ const selectedService=serviceConfig[service.value]?.label||"";
+ if(serviceField&&[...serviceField.options].some(option=>option.value===selectedService))serviceField.value=selectedService;
+ if($("deposit-reg")&&!$("deposit-reg").value)$("deposit-reg").value=$("reg")?.value||"";
+ if($("deposit-pickup")&&!$("deposit-pickup").value)$("deposit-pickup").value=$("pickup")?.value||"";
+ if($("deposit-destination")&&!$("deposit-destination").value)$("deposit-destination").value=$("destination")?.value||"";
+}
+
+document.querySelectorAll(".deposit-link").forEach(link=>link.addEventListener("click",prefillDeposit));
+
+const depositDetailsForm=$("deposit-details-form");
+if(depositDetailsForm){
+ depositDetailsForm.addEventListener("submit",async event=>{
+  event.preventDefault();
+  showDepositError("deposit-details-error","");
+  const button=$("prepare-deposit");
+  button.disabled=true;
+  button.textContent="Preparing secure payment…";
+  try{
+   if(typeof globalThis.Stripe!=="function")throw new Error("Secure payment is still loading. Please try again in a moment.");
+   const values=Object.fromEntries(new FormData(depositDetailsForm).entries());
+   const response=await fetch(`${recoveryPaymentApi}/create-recovery-deposit`,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({...values,bookingToken:depositBookingToken})
+   });
+   const data=await response.json().catch(()=>({}));
+   if(!response.ok)throw new Error(data.error||"Unable to prepare the deposit payment.");
+   depositStripe=Stripe(data.publishableKey);
+   depositElements=depositStripe.elements({
+    clientSecret:data.clientSecret,
+    appearance:{theme:"night",variables:{colorPrimary:"#ffb000",colorBackground:"#090d10",colorText:"#f5f7f8",colorDanger:"#ff6b61",borderRadius:"7px"}}
+   });
+   if(depositPaymentElement)depositPaymentElement.destroy();
+   depositPaymentElement=depositElements.create("payment",{layout:"tabs"});
+   depositPaymentElement.mount("#deposit-payment-element");
+   depositDetailsForm.hidden=true;
+   $("deposit-payment-form").hidden=false;
+   $("deposit-payment-form").scrollIntoView({behavior:"smooth",block:"center"});
+  }catch(error){
+   showDepositError("deposit-details-error",error.message||"Unable to prepare the deposit payment.");
+  }finally{
+   button.disabled=false;
+   button.textContent="Continue to secure payment";
+  }
+ });
+}
+
+async function notifyRecoveryDeposit(paymentIntentId){
+ if(!paymentIntentId)return;
+ try{
+  await fetch(`${recoveryPaymentApi}/notify-recovery-deposit`,{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({paymentIntentId})
+  });
+ }catch{}
+}
+
+const depositPaymentForm=$("deposit-payment-form");
+if(depositPaymentForm){
+ depositPaymentForm.addEventListener("submit",async event=>{
+  event.preventDefault();
+  showDepositError("deposit-payment-error","");
+  const button=$("pay-deposit");
+  button.disabled=true;
+  button.textContent="Processing £50 securely…";
+  try{
+   const result=await depositStripe.confirmPayment({
+    elements:depositElements,
+    confirmParams:{return_url:`${window.location.origin}/deposit-success.html`},
+    redirect:"if_required"
+   });
+   if(result.error)throw new Error(result.error.message);
+   const paymentIntentId=result.paymentIntent?.id;
+   if(paymentIntentId)await notifyRecoveryDeposit(paymentIntentId);
+   window.location.assign(`/deposit-success.html${paymentIntentId?`?payment_intent=${encodeURIComponent(paymentIntentId)}`:""}`);
+  }catch(error){
+   showDepositError("deposit-payment-error",error.message||"Payment was not completed. Please try again.");
+   button.disabled=false;
+   button.textContent="Pay £50 deposit";
+  }
+ });
+}
+
+$("back-to-deposit-details")?.addEventListener("click",()=>{
+ depositPaymentForm.hidden=true;
+ depositDetailsForm.hidden=false;
+ depositDetailsForm.scrollIntoView({behavior:"smooth",block:"center"});
+});

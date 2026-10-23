@@ -1,6 +1,15 @@
 let estimate = null;
 let stripe = null;
 let elements = null;
+const WHATSAPP_NUMBER = "447435376862";
+
+const whatsappUrl = message => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+document.querySelectorAll(".whatsapp-link").forEach(link => {
+  link.href = whatsappUrl(link.dataset.message || "Hi Vantaline Plumbing, I would like to make an enquiry.");
+  link.target = "_blank";
+  link.rel = "noopener";
+});
 
 const showError = (id, message) => {
   const node = document.getElementById(id);
@@ -30,6 +39,7 @@ document.getElementById("estimate-form").addEventListener("submit", async event 
     document.getElementById("miles").textContent = `Approx. ${data.miles} miles`;
     document.getElementById("guide").textContent = data.guide || "Quoted after inspection";
     document.getElementById("fee").textContent = `£${data.callout}`;
+    updateWhatsAppEnquiry();
     document.getElementById("booking").hidden = false;
     document.getElementById("booking").scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (error) {
@@ -37,6 +47,33 @@ document.getElementById("estimate-form").addEventListener("submit", async event 
   } finally {
     button.disabled = false;
     button.textContent = "Get my call-out price";
+  }
+});
+
+function updateWhatsAppEnquiry() {
+  if (!estimate) return;
+  const details = document.getElementById("whatsapp-details").value.trim();
+  const guide = estimate.guide || "quoted after inspection";
+  const lines = [
+    "Hi Vantaline Plumbing, I'd like to enquire about a plumbing job.",
+    "",
+    `Job: ${estimate.jobLabel}`,
+    `Postcode: ${estimate.postcode}`,
+    `Website call-out: £${estimate.callout}`,
+    `Typical repair guide: ${guide}`
+  ];
+  if (details) lines.push(`Details: ${details}`);
+  lines.push("", "Please can you confirm availability and the price before attending?");
+  document.getElementById("whatsapp-enquiry").href = whatsappUrl(lines.join("\n"));
+}
+
+document.getElementById("whatsapp-details").addEventListener("input", updateWhatsAppEnquiry);
+document.getElementById("whatsapp-enquiry").addEventListener("click", () => {
+  updateWhatsAppEnquiry();
+  if (typeof gtag === "function") {
+    gtag("event", "whatsapp_enquiry", {
+      job_type: estimate?.jobLabel || "unknown"
+    });
   }
 });
 

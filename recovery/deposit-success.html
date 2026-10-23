@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Deposit received | Vantaline Recovery</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="deposit-success">
+<main>
+<span class="success-mark">✓</span>
+<p class="kicker">DEPOSIT RECEIVED</p>
+<h1>Your recovery job is secured.</h1>
+<p>Thank you. Your £50 deposit will be deducted from the final price agreed with Vantaline Recovery. We will use the details attached to your payment and contact you if anything needs confirming.</p>
+<div class="success-actions"><a class="btn primary" href="tel:+447435376862">Call 07435 376862</a><a class="btn secondary" href="https://wa.me/447435376862?text=Hi%20Vantaline%20Recovery%2C%20I%20have%20paid%20my%20%C2%A350%20deposit." target="_blank" rel="noopener">Message on WhatsApp</a></div>
+<a class="success-back" href="/">Return to Vantaline Recovery</a>
+</main>
+<script>
+const paymentIntentId=new URLSearchParams(location.search).get("payment_intent");
+if(paymentIntentId){fetch("https://www.vantalineplumbing.co.uk/api/notify-recovery-deposit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({paymentIntentId})}).catch(()=>{});}
+</script>
+</body>
+</html>

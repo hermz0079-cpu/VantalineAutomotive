@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Vantaline Plumbing | Local Plumber Across London</title>
-  <meta name="description" content="Leaks, blockages, toilets, taps and plumbing call-outs across Greater London. Check your postcode price and book securely online.">
+  <meta name="description" content="Leaks, blockages, toilets, taps and plumbing call-outs across Greater London. Check your postcode price, enquire on WhatsApp or pay securely online.">
   <link rel="canonical" href="https://vantalineplumbing.co.uk/">
   <!-- Google Ads conversion tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-516901067"></script>
@@ -22,11 +22,11 @@
   <script src="/script.js" defer></script>
 </head>
 <body>
-  <div class="notice"><span>Local plumbing repairs across Greater London</span><a href="tel:+447435376862">Need help? Call 07435 376862</a></div>
+  <div class="notice"><span>Local plumbing repairs across Greater London</span><a class="whatsapp-link" data-message="Hi Vantaline Plumbing, I need help with a plumbing problem. Please can you confirm availability?" href="https://wa.me/447435376862">Message us on WhatsApp</a></div>
   <header>
     <a class="brand" href="#top"><span class="mark">V</span><span><b>VANTALINE</b><small>PLUMBING</small></span></a>
-    <nav><a href="#quote">Prices & booking</a><a href="#services">Services</a><a href="#areas">Areas</a></nav>
-    <a class="button small" href="#quote">Get price</a>
+    <nav><a href="#quote">Price & enquiry</a><a href="#services">Services</a><a href="#areas">Areas</a></nav>
+    <a class="button small whatsapp whatsapp-link" data-message="Hi Vantaline Plumbing, I need help with a plumbing problem. Please can you confirm availability?" href="https://wa.me/447435376862">WhatsApp us</a>
   </header>
 
   <main>
@@ -34,19 +34,19 @@
       <div>
         <p class="eyebrow">LOCAL · RESPONSIVE · STRAIGHTFORWARD</p>
         <h1>Plumbing problem?<br><em>Let’s get it sorted.</em></h1>
-        <p class="lead">Leaks, blockages, toilets, taps and everyday plumbing repairs across Greater London.</p>
-        <div class="actions"><a class="button" href="#quote">Get price & book online</a><a class="button outline" href="tel:+447435376862">Call 07435 376862</a></div>
+        <p class="lead">Leaks, blockages, toilets, taps and everyday plumbing repairs across Greater London. Message the job and postcode on WhatsApp for the quickest response.</p>
+        <div class="actions"><a class="button whatsapp whatsapp-link" data-message="Hi Vantaline Plumbing, I need help with a plumbing problem. My postcode is: " href="https://wa.me/447435376862">Enquire on WhatsApp</a><a class="button outline" href="#quote">Check price & pay online</a></div>
         <div class="trust"><span>✓ Competitive call-outs</span><span>✓ Prices agreed before repair</span><span>✓ Homes & landlords</span></div>
       </div>
-      <div class="hero-image"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=85" alt="Plumber carrying out a pipe repair"><div class="status"><i></i><span><b>Need a plumber today?</b><small>Check availability online</small></span></div></div>
+      <div class="hero-image"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=85" alt="Plumber carrying out a pipe repair"><div class="status"><i></i><span><b>Need a plumber today?</b><small>Message us on WhatsApp</small></span></div></div>
     </section>
 
     <section class="quote section" id="quote">
       <div class="quote-copy">
-        <p class="kicker">INSTANT CALL-OUT PRICE</p>
-        <h2>Check the fee.<br>Book securely.</h2>
-        <p>We calculate your call-out from the service postcode. Repair prices are guides only and agreed after inspection.</p>
-        <div class="facts"><span><b>From £39</b><small>postcode-based call-out</small></span><span><b>Call-out only</b><small>repair charged separately</small></span><span><b>Apple Pay</b><small>secure online payment</small></span></div>
+        <p class="kicker">PRICE, MESSAGE OR BOOK</p>
+        <h2>Check the fee.<br>Ask us first.</h2>
+        <p>We calculate your call-out from the service postcode. Send the result to WhatsApp to confirm the job and availability, or continue to secure online payment when you are ready.</p>
+        <div class="facts"><span><b>WhatsApp first</b><small>send job and postcode</small></span><span><b>From £39</b><small>postcode-based call-out</small></span><span><b>Online payment</b><small>kept as an option</small></span></div>
       </div>
 
       <div class="panel">
@@ -79,8 +79,22 @@
           <div class="total"><span>Pay to book</span><b id="fee"></b></div>
           <p class="disclaimer"><b>Important:</b> The online payment covers travel, attendance and initial assessment only. The repair guide is not a quote. Labour, parts, materials, parking, congestion charges and specialist equipment are separate and require your approval.</p>
 
-          <form id="booking-form">
-            <h3>Your booking details</h3>
+          <div class="whatsapp-enquiry">
+            <span class="recommended">RECOMMENDED FIRST STEP</span>
+            <h3>Enquire on WhatsApp</h3>
+            <p>Your selected job, postcode and displayed call-out will be added to the message automatically.</p>
+            <label>Anything else we should know? <span>(optional)</span>
+              <textarea id="whatsapp-details" rows="3" placeholder="For example: water is leaking now, access details, photos available…"></textarea>
+            </label>
+            <a class="button whatsapp full" id="whatsapp-enquiry" href="https://wa.me/447435376862" target="_blank" rel="noopener">Send enquiry on WhatsApp</a>
+            <small>WhatsApp will open with a ready-to-send message. You can edit it or attach photos before sending.</small>
+          </div>
+
+          <div class="option-divider"><span>OR PAY THE CALL-OUT ONLINE</span></div>
+
+          <form id="booking-form" class="payment-option">
+            <h3>Ready to request a booking?</h3>
+            <p>Online payment is still available if you want to pay the call-out now. We will contact you to confirm the appointment time.</p>
             <div class="grid">
               <label>Full name<input name="name" autocomplete="name" required></label>
               <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required></label>
@@ -90,7 +104,7 @@
               <label class="wide">What is happening?<textarea name="details" rows="3" placeholder="Describe the problem and whether water is currently leaking." required></textarea></label>
             </div>
             <label class="check"><input type="checkbox" required><span>I understand I am paying the call-out only and repair work is charged separately after approval.</span></label>
-            <button class="pay" id="start-payment" type="submit"><span>Continue to secure payment</span><small>Apple Pay · Card · Stripe</small></button>
+            <button class="pay" id="start-payment" type="submit"><span>Continue to secure payment</span><small>Card and eligible wallets · Stripe</small></button>
             <p class="error" id="booking-error" hidden></p>
           </form>
 
@@ -111,6 +125,6 @@
 
     <section class="section areas" id="areas"><div><p class="kicker dark">LONDON-WIDE COVERAGE</p><h2>Serving customers across Greater London.</h2><p>Enter the service postcode for a clear distance-based call-out price before booking.</p></div><div class="area-tags"><span>Central London</span><span>North London</span><span>West London</span><span>East London</span><span>South London</span><span>Greater London</span></div></section>
   </main>
-  <footer><a class="brand" href="#top"><span class="mark">V</span><span><b>VANTALINE</b><small>PLUMBING</small></span></a><p>Local plumbing repairs across Greater London.</p><a href="tel:+447435376862">07435 376862</a></footer>
+  <footer><a class="brand" href="#top"><span class="mark">V</span><span><b>VANTALINE</b><small>PLUMBING</small></span></a><p>Local plumbing repairs across Greater London.</p><div class="footer-contact"><a class="whatsapp-link" data-message="Hi Vantaline Plumbing, I need help with a plumbing problem. Please can you confirm availability?" href="https://wa.me/447435376862">WhatsApp us</a><a href="tel:+447435376862">Call 07435 376862</a></div></footer>
 </body>
 </html>
